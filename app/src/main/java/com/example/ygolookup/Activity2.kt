@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.isDigitsOnly
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
@@ -27,7 +28,13 @@ class Activity2 : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.displayName)
         val imageView = findViewById<ImageView>(R.id.imageView2)
 
-        val url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?name="+cardName+"&misc=yes"
+        var url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?name="+cardName+"&misc=yes"
+        if (cardName != null) {
+            if(cardName.isDigitsOnly())
+            {
+                url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?id="+cardName+"&misc=yes"
+            }
+        }
 
         val queue = Volley.newRequestQueue(this)
 

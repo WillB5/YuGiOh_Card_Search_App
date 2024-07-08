@@ -8,10 +8,10 @@
 
     <EditText
         android:id="@+id/cardName"
-        android:layout_width="227dp"
-        android:layout_height="46dp"
+        android:layout_width="259dp"
+        android:layout_height="52dp"
         android:ems="10"
-        android:hint="Enter Yu-Gi-Oh! card name"
+        android:hint="Enter Yu-Gi-Oh! card name/ID"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text=""
