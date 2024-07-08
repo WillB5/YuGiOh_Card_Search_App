@@ -1,19 +1,14 @@
 package com.example.ygolookup
 
-import android.media.Image
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
 import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.squareup.picasso.Picasso
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 import org.json.JSONObject
 import org.json.JSONTokener
 
@@ -57,7 +52,6 @@ class Activity2 : AppCompatActivity() {
                     banTCG = "\n\nTCG Restrictions: " + cardObj.getJSONObject("banlist_info").getString("ban_tcg")
                 }
 
-
                 //check if card has an effect or normal description
                 var desc = "\n\nDescription: " + cardObj.getString("desc")
                 if(cardObj.getJSONArray("misc_info").getJSONObject(0).getInt("has_effect")==1)
@@ -70,6 +64,7 @@ class Activity2 : AppCompatActivity() {
 
                 //find card specific info and adjust accordingly
                 var cardSpecial = ""
+
                 if(cardObj.has("atk"))
                 {
                     cardSpecial += "\n\nATK: " + cardObj.getInt("atk")
@@ -92,7 +87,14 @@ class Activity2 : AppCompatActivity() {
                 }
                 if(cardObj.has("race"))
                 {
-                    cardSpecial += "\n\nMonster Type: " + cardObj.getString("race")
+                    if(cardObj.getString("frameType") == "spell" || cardObj.getString("frameType") == "trap")
+                    {
+                        cardSpecial += "\n\nSpell/Trap Type: " + cardObj.getString("race")
+                    }
+                    else
+                    {
+                        cardSpecial += "\n\nMonster Type: " + cardObj.getString("race")
+                    }
                 }
                 if(cardObj.has("attribute"))
                 {

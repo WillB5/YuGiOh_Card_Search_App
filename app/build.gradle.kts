@@ -45,8 +45,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("com.android.volley:volley:1.2.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
-    implementation ("com.google.code.gson:gson:2.8.7")
+    implementation ("com.google.android.gms:play-services-vision:20.1.3")
     implementation("com.squareup.picasso:picasso:2.71828")
 
 }
