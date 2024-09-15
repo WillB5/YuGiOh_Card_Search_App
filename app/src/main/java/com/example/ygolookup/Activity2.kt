@@ -69,7 +69,7 @@ class Activity2 : AppCompatActivity() {
                 {
                     cardSpecial += "\n\nATK: " + cardObj.getInt("atk")
                 }
-                if(cardObj.has("def"))
+                if(cardObj.has("def") && cardObj.getString("def") != "null")
                 {
                     cardSpecial += "\n\nDEF: " + cardObj.getInt("def")
                 }
